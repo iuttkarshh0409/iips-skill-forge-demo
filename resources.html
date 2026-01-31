@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IIPS Skill Forge - Resources</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstapi.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .heading-font {
+      font-family: 'Merriweather', Georgia, serif;
+    }
+    .sidebar-item {
+      transition: all 0.2s ease;
+    }
+    .sidebar-item:hover {
+      transform: translateX(4px);
+    }
+    .subject-card {
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .subject-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1);
+    }
+    .subject-card.active {
+      border-color: #3b82f6;
+      background-color: #f0f9ff;
+    }
+    .resource-item {
+      transition: all 0.2s ease;
+    }
+    .resource-item:hover {
+      transform: translateX(2px);
+      background-color: #f8fafc;
+    }
+    .resource-tag {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.25rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+    }
+    .tag-notes {
+      background-color: #dbeafe;
+      color: #0c4a6e;
+    }
+    .tag-textbook {
+      background-color: #ddd6fe;
+      color: #3730a3;
+    }
+    .tag-cheatsheet {
+      background-color: #dcfce7;
+      color: #15803d;
+    }
+    .tag-link {
+      background-color: #fce7f3;
+      color: #831843;
+    }
+    .tag-video {
+      background-color: #fed7aa;
+      color: #7c2d12;
+    }
+    .action-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .action-open {
+      color: #3b82f6;
+    }
+    .action-open:hover {
+      color: #1d4ed8;
+      background-color: #eff6ff;
+    }
+    .action-download {
+      color: #059669;
+    }
+    .action-download:hover {
+      color: #047857;
+      background-color: #ecfdf5;
+    }
+    .breadcrumb-item {
+      display: inline-flex;
+      align-items: center;
+    }
+    .breadcrumb-separator {
+      margin: 0 0.5rem;
+      color: #cbd5e1;
+    }
+    .unit-section {
+      transition: all 0.2s ease;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-slate-50 text-slate-700">
+  <div class="h-full w-full flex flex-col overflow-hidden"><!-- Top Header -->
+   <header id="main-header" class="bg-slate-800 text-white px-6 py-4 flex items-center justify-between shadow-md flex-shrink-0">
+    <div class="flex items-center gap-4">
+     <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      </svg>
+     </div>
+     <div>
+      <h1 class="heading-font text-xl font-bold tracking-tight">IIPS Skill Forge</h1>
+      <p class="text-slate-400 text-xs">Learning Management System</p>
+     </div>
+    </div>
+    <div class="flex items-center gap-6">
+     <div class="hidden md:flex items-center gap-2 text-slate-300 text-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg><span>Semester III</span>
+     </div><button class="relative p-2 text-slate-300 hover:text-white transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      </svg><span class="absolute top-1 right-1 w-2 h-2 bg-blue-400 rounded-full"></span> </button>
+     <div class="flex items-center gap-3 pl-4 border-l border-slate-600">
+      <div class="text-right hidden sm:block">
+       <p id="student-name" class="text-sm font-medium">Aryan Sharma</p>
+       <p id="enrollment-id" class="text-xs text-slate-400">MCA/2024/045</p>
+      </div>
+      <div class="w-9 h-9 bg-slate-600 rounded-full flex items-center justify-center text-sm font-semibold border-2 border-blue-400">
+       AS
+      </div>
+     </div>
+    </div>
+   </header>
+   <div class="flex flex-1 overflow-hidden"><!-- Left Sidebar -->
+    <aside id="sidebar" class="w-56 bg-white border-r border-slate-200 flex-shrink-0 hidden md:flex flex-col">
+     <nav class="flex-1 py-6 px-4">
+      <ul class="space-y-1">
+       <li><a href="index.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+         </svg> Dashboard </a></li>
+       <li><a href="subjects.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+         </svg> Subjects </a></li>
+       <li><a href="progress.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+         </svg> Progress </a></li>
+       <li><a href="mcq.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+         </svg> MCQs </a></li>
+       <li><a href="resources.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg bg-slate-800 text-white font-medium">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+         </svg> Resources </a></li>
+      </ul>
+     </nav>
+     <div class="p-4 border-t border-slate-200">
+      <div class="bg-blue-50 rounded-lg p-4">
+       <p class="text-xs text-slate-600 mb-2">Resources Available</p>
+       <div class="flex items-end gap-2"><span class="text-2xl font-bold text-slate-800">48</span> <span class="text-xs text-slate-500">Total items</span>
+       </div>
+       <div class="mt-3 space-y-1 text-xs text-slate-600">
+        <p>• 18 PDF Notes</p>
+        <p>• 12 Links</p>
+        <p>• 10 Cheat Sheets</p>
+       </div>
+      </div>
+     </div>
+    </aside><!-- Main Content -->
+    <main class="flex-1 overflow-y-auto bg-slate-50 p-6"><!-- Breadcrumb Navigation -->
+     <div class="mb-8">
+      <div class="flex items-center text-sm text-slate-600 mb-6"><a href="#" class="breadcrumb-item hover:text-slate-800 transition-colors">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-3m0 0l7-4 7 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9m-9 16l-7-4m0 0l-2-3m16 3l2-3m0 0l7-4" />
+        </svg> Dashboard </a> <span class="breadcrumb-separator">/</span> <span class="breadcrumb-item text-slate-700 font-medium">Resources</span>
+      </div><!-- Page Header -->
+      <div>
+       <h1 id="page-title" class="heading-font text-3xl font-bold text-slate-800 mb-2">Resources</h1>
+       <p id="page-description" class="text-slate-500 text-base">Access organized study materials, notes, and reference documents for your subjects</p>
+      </div>
+     </div><!-- Subject Grid -->
+     <section id="subject-list-section" class="mb-8">
+      <h2 class="text-lg font-semibold text-slate-800 mb-4">Select a Subject</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="subject-grid"><!-- DBMS Subject Card -->
+       <div class="subject-card bg-white border-2 border-slate-200 rounded-lg p-5 shadow-sm" data-subject="dbms">
+        <div class="flex items-start justify-between mb-3">
+         <div>
+          <h3 class="font-semibold text-slate-800">Database Management Systems</h3>
+          <p class="text-xs text-slate-500 mt-1">MCA302</p>
+         </div>
+         <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10a2 2 0 002 2h12a2 2 0 002-2V9M4 7l8-4 8 4m0 0v10a2 2 0 01-2 2H6a2 2 0 01-2-2V9" />
+          </svg>
+         </div>
+        </div>
+        <p class="text-xs text-slate-600">8 resources • 4 units</p>
+       </div><!-- DAA Subject Card -->
+       <div class="subject-card bg-white border-2 border-slate-200 rounded-lg p-5 shadow-sm" data-subject="daa">
+        <div class="flex items-start justify-between mb-3">
+         <div>
+          <h3 class="font-semibold text-slate-800">Design &amp; Analysis of Algorithms</h3>
+          <p class="text-xs text-slate-500 mt-1">MCA301</p>
+         </div>
+         <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+         </div>
+        </div>
+        <p class="text-xs text-slate-600">10 resources • 4 units</p>
+       </div><!-- OS Subject Card -->
+       <div class="subject-card bg-white border-2 border-slate-200 rounded-lg p-5 shadow-sm" data-subject="os">
+        <div class="flex items-start justify-between mb-3">
+         <div>
+          <h3 class="font-semibold text-slate-800">Operating Systems</h3>
+          <p class="text-xs text-slate-500 mt-1">MCA303</p>
+         </div>
+         <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+         </div>
+        </div>
+        <p class="text-xs text-slate-600">9 resources • 4 units</p>
+       </div><!-- CN Subject Card -->
+       <div class="subject-card bg-white border-2 border-slate-200 rounded-lg p-5 shadow-sm" data-subject="cn">
+        <div class="flex items-start justify-between mb-3">
+         <div>
+          <h3 class="font-semibold text-slate-800">Computer Networks</h3>
+          <p class="text-xs text-slate-500 mt-1">MCA304</p>
+         </div>
+         <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.658 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+         </div>
+        </div>
+        <p class="text-xs text-slate-600">11 resources • 4 units</p>
+       </div><!-- SE Subject Card -->
+       <div class="subject-card bg-white border-2 border-slate-200 rounded-lg p-5 shadow-sm" data-subject="se">
+        <div class="flex items-start justify-between mb-3">
+         <div>
+          <h3 class="font-semibold text-slate-800">Software Engineering</h3>
+          <p class="text-xs text-slate-500 mt-1">MCA305</p>
+         </div>
+         <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+         </div>
+        </div>
+        <p class="text-xs text-slate-600">10 resources • 3 units</p>
+       </div>
+      </div>
+     </section><!-- Resources Display Section -->
+     <section id="resources-display-section" class="hidden"><!-- Subject Header -->
+      <div class="mb-6 flex items-center justify-between">
+       <div><button id="back-to-subjects" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm mb-3">
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+         </svg> Back to Subjects </button>
+        <h2 id="selected-subject-title" class="heading-font text-2xl font-bold text-slate-800"></h2>
+        <p id="selected-subject-code" class="text-slate-500 text-sm mt-1"></p>
+       </div>
+       <div id="resource-stats" class="text-right">
+        <p class="text-2xl font-bold text-slate-800" id="resource-count">0</p>
+        <p class="text-xs text-slate-500">Total Resources</p>
+       </div>
+      </div><!-- Units and Resources -->
+      <div id="units-container" class="space-y-6"><!-- Units will be dynamically inserted here -->
+      </div>
+     </section>
+    </main>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      student_name: 'Aryan Sharma',
+      enrollment_id: 'MCA/2024/045',
+      program_name: 'Master of Computer Applications • Semester III',
+      page_title: 'Resources',
+      page_description: 'Access organized study materials, notes, and reference documents for your subjects',
+      primary_color: '#1e293b',
+      secondary_color: '#f8fafc',
+      text_color: '#334155',
+      accent_color: '#3b82f6',
+      surface_color: '#ffffff'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Resource data structure
+    const resourcesData = {
+      dbms: {
+        title: 'Database Management Systems',
+        code: 'MCA302',
+        icon: 'M4 7v10a2 2 0 002 2h12a2 2 0 002-2V9M4 7l8-4 8 4m0 0v10a2 2 0 01-2 2H6a2 2 0 01-2-2V9',
+        units: [
+          {
+            name: 'Unit 1: Database Concepts & Architecture',
+            resources: [
+              { title: 'Introduction to DBMS', type: 'notes', action: 'open' },
+              { title: 'Database Architecture Overview', type: 'notes', action: 'open' },
+              { title: 'DBMS vs File Systems', type: 'cheatsheet', action: 'download' }
+            ]
+          },
+          {
+            name: 'Unit 2: SQL Queries & Joins',
+            resources: [
+              { title: 'SQL Syntax Guide', type: 'notes', action: 'open' },
+              { title: 'Types of SQL Joins', type: 'cheatsheet', action: 'download' },
+              { title: 'Advanced SQL Tutorial', type: 'link', action: 'open' }
+            ]
+          },
+          {
+            name: 'Unit 3: Normalization & ER Diagrams',
+            resources: [
+              { title: 'Database Normalization Rules', type: 'notes', action: 'open' },
+              { title: 'ER Diagram Tutorial PDF', type: 'textbook', action: 'download' },
+              { title: 'Normalization Quick Reference', type: 'cheatsheet', action: 'download' }
+            ]
+          },
+          {
+            name: 'Unit 4: Transactions & Concurrency',
+            resources: [
+              { title: 'Transaction Concepts', type: 'notes', action: 'open' },
+              { title: 'ACID Properties Explained', type: 'link', action: 'open' }
+            ]
+          }
+        ]
+      },
+      daa: {
+        title: 'Design & Analysis of Algorithms',
+        code: 'MCA301',
+        icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+        units: [
+          {
+            name: 'Unit 1: Algorithm Complexity Analysis',
+            resources: [
+              { title: 'Big O Notation Guide', type: 'notes', action: 'open' },
+              { title: 'Time & Space Complexity', type: 'cheatsheet', action: 'download' },
+              { title: 'Complexity Analysis Textbook Pages (34-56)', type: 'textbook', action: 'download' }
+            ]
+          },
+          {
+            name: 'Unit 2: Sorting Algorithms',
+            resources: [
+              { title: 'Sorting Algorithms Comparison', type: 'notes', action: 'open' },
+              { title: 'Quick Sort Deep Dive', type: 'notes', action: 'open' },
+              { title: 'Merge Sort Implementation', type: 'link', action: 'open' },
+              { title: 'Sorting Quick Ref Card', type: 'cheatsheet', action: 'download' }
+            ]
+          },
+          {
+            name: 'Unit 3: Dynamic Programming',
+            resources: [
+              { title: 'DP Problem Solving Strategy', type: 'notes', action: 'open' },
+              { title: 'Common DP Problems', type: 'cheatsheet', action: 'download' },
+              { title: 'DP Textbook Reference', type: 'textbook', action: 'download' },
+              { title: 'DP Solution Patterns', type: 'link', action: 'open' }
+            ]
+          },
+          {
+            name: 'Unit 4: Graph Algorithms',
+            resources: [
+              { title: 'Graph Representation Methods', type: 'notes', action: 'open' },
+              { title: 'BFS vs DFS Comparison', type: 'cheatsheet', action: 'download' },
+              { title: 'Dijkstra Algorithm Guide', type: 'notes', action: 'open' }
+            ]
+          }
+        ]
+      },
+      os: {
+        title: 'Operating Systems',
+        code: 'MCA303',
+        icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+        units: [
+          {
+            name: 'Unit 1: Process Management',
+            resources: [
+              { title: 'Process States & Transitions', type: 'notes', action: 'open' },
+              { title: 'CPU Scheduling Algorithms', type: 'cheatsheet', action: 'download' },
+              { title: 'Context Switching Explained', type: 'video', action: 'open' }
+            ]
+          },
+          {
+            name: 'Unit 2: Memory Management',
+            resources: [
+              { title: 'Virtual Memory Concepts', type: 'notes', action: 'open' },
+              { title: 'Paging and Segmentation', type: 'textbook', action: 'download' },
+              { title: 'Page Replacement Algorithms', type: 'cheatsheet', action: 'download' }
+            ]
+          },
+          {
+            name: 'Unit 3: File Systems',
+            resources: [
+              { title: 'File System Architecture', type: 'notes', action: 'open' },
+              { title: 'FAT vs NTFS vs ext4', type: 'link', action: 'open' },
+              { title: 'File Allocation Quick Ref', type: 'cheatsheet', action: 'download' }
+            ]
+          },
+          {
+            name: 'Unit 4: Deadlock & Synchronization',
+            resources: [
+              { title: 'Deadlock Detection Methods', type: 'notes', action: 'open' },
+              { title: 'Semaphores and Mutexes', type: 'notes', action: 'open' },
+              { title: 'Synchronization Primitives', type: 'cheatsheet', action: 'download' }
+            ]
+          }
+        ]
+      },
+      cn: {
+        title: 'Computer Networks',
+        code: 'MCA304',
+        icon: 'M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.658 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1',
+        units: [
+          {
+            name: 'Unit 1: Network Basics & OSI Model',
+            resources: [
+              { title: 'OSI Model Layers Explained', type: 'notes', action: 'open' },
+              { title: 'Network Topologies Overview', type: 'cheatsheet', action: 'download' },
+              { title: 'OSI Model Reference Card', type: 'textbook', action: 'download' }
+            ]
+          },
+          {
+            name: 'Unit 2: TCP/IP & Transport Layer',
+            resources: [
+              { title: 'TCP vs UDP Comparison', type: 'notes', action: 'open' },
+              { title: 'TCP Connection Establishment', type: 'cheatsheet', action: 'download' },
+              { title: 'Port Numbers Reference', type: 'link', action: 'open' },
+              { title: 'Transport Layer Protocols', type: 'notes', action: 'open' }
+            ]
+          },
+          {
+            name: 'Unit 3: IP Addressing & Routing',
+            resources: [
+              { title: 'IPv4 Subnetting Guide', type: 'notes', action: 'open' },
+              { title: 'Routing Protocols Overview', type: 'cheatsheet', action: 'download' },
+              { title: 'IP Addressing Textbook Sections', type: 'textbook', action: 'download' },
+              { title: 'CIDR Notation Explained', type: 'link', action: 'open' }
+            ]
+          },
+          {
+            name: 'Unit 4: Application Layer Protocols',
+            resources: [
+              { title: 'HTTP/HTTPS Deep Dive', type: 'notes', action: 'open' },
+              { title: 'DNS Resolution Process', type: 'cheatsheet', action: 'download' },
+              { title: 'Email Protocols Guide', type: 'notes', action: 'open' }
+            ]
+          }
+        ]
+      },
+      se: {
+        title: 'Software Engineering',
+        code: 'MCA305',
+        icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+        units: [
+          {
+            name: 'Unit 1: Software Development Lifecycle',
+            resources: [
+              { title: 'SDLC Models Comparison', type: 'notes', action: 'open' },
+              { title: 'Waterfall vs Agile', type: 'cheatsheet', action: 'download' },
+              { title: 'SDLC Phases Overview', type: 'textbook', action: 'download' }
+            ]
+          },
+          {
+            name: 'Unit 2: Requirements & Design',
+            resources: [
+              { title: 'Requirements Gathering Techniques', type: 'notes', action: 'open' },
+              { title: 'UML Diagrams Quick Ref', type: 'cheatsheet', action: 'download' },
+              { title: 'Design Patterns Overview', type: 'link', action: 'open' },
+              { title: 'Architectural Patterns', type: 'notes', action: 'open' }
+            ]
+          },
+          {
+            name: 'Unit 3: Testing & QA',
+            resources: [
+              { title: 'Testing Strategies & Types', type: 'notes', action: 'open' },
+              { title: 'Black Box vs White Box Testing', type: 'cheatsheet', action: 'download' },
+              { title: 'Test Case Design Guide', type: 'notes', action: 'open' }
+            ]
+          }
+        ]
+      }
+    };
+    
+    // DOM Elements
+    const subjectListSection = document.getElementById('subject-list-section');
+    const resourcesDisplaySection = document.getElementById('resources-display-section');
+    const subjectGrid = document.getElementById('subject-grid');
+    const backToSubjectsBtn = document.getElementById('back-to-subjects');
+    const selectedSubjectTitle = document.getElementById('selected-subject-title');
+    const selectedSubjectCode = document.getElementById('selected-subject-code');
+    const resourceCount = document.getElementById('resource-count');
+    const unitsContainer = document.getElementById('units-container');
+    
+    // Subject card click handler
+    subjectGrid.addEventListener('click', (e) => {
+      const card = e.target.closest('.subject-card');
+      if (!card) return;
+      
+      const subject = card.dataset.subject;
+      displayResources(subject);
+    });
+    
+    // Back button handler
+    backToSubjectsBtn.addEventListener('click', () => {
+      subjectListSection.classList.remove('hidden');
+      resourcesDisplaySection.classList.add('hidden');
+    });
+    
+    function displayResources(subject) {
+      const data = resourcesData[subject];
+      if (!data) return;
+      
+      // Update header
+      selectedSubjectTitle.textContent = data.title;
+      selectedSubjectCode.textContent = data.code;
+      
+      // Calculate total resources
+      let totalResources = 0;
+      data.units.forEach(unit => {
+        totalResources += unit.resources.length;
+      });
+      resourceCount.textContent = totalResources;
+      
+      // Clear container
+      unitsContainer.innerHTML = '';
+      
+      // Render units and resources
+      data.units.forEach((unit, unitIndex) => {
+        const unitSection = document.createElement('div');
+        unitSection.className = 'unit-section bg-white rounded-lg border border-slate-200 p-6 shadow-sm';
+        
+        const unitHeader = document.createElement('h3');
+        unitHeader.className = 'text-base font-semibold text-slate-800 mb-4 flex items-center gap-2';
+        unitHeader.innerHTML = `
+          <span class="inline-block w-1 h-5 bg-blue-500 rounded-full"></span>
+          ${unit.name}
+        `;
+        unitSection.appendChild(unitHeader);
+        
+        const resourcesList = document.createElement('div');
+        resourcesList.className = 'space-y-3';
+        
+        unit.resources.forEach(resource => {
+          const resourceItem = document.createElement('div');
+          resourceItem.className = 'resource-item bg-slate-50 border border-slate-200 rounded-lg p-4 hover:border-slate-300';
+          
+          const tagClass = `tag-${resource.type}`;
+          const tagText = resource.type.toUpperCase().replace(/([A-Z])/g, ' $1').trim();
+          
+          const actionLabel = resource.action === 'open' ? 'Open' : 'Download';
+          const actionIcon = resource.action === 'open' 
+            ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>'
+            : '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>';
+          
+          resourceItem.innerHTML = `
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-grow">
+                <p class="font-medium text-slate-800">${resource.title}</p>
+                <span class="resource-tag ${tagClass} mt-2">${tagText}</span>
+              </div>
+              <button class="action-button action-${resource.action} flex-shrink-0 whitespace-nowrap">
+                ${actionIcon}
+                ${actionLabel}
+              </button>
+            </div>
+          `;
+          
+          resourcesList.appendChild(resourceItem);
+        });
+        
+        unitSection.appendChild(resourcesList);
+        unitsContainer.appendChild(unitSection);
+      });
+      
+      // Show resources section, hide subject list
+      subjectListSection.classList.add('hidden');
+      resourcesDisplaySection.classList.remove('hidden');
+    }
+    
+    // ElementSDK Integration
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      const studentNameEl = document.getElementById('student-name');
+      if (studentNameEl) {
+        studentNameEl.textContent = config.student_name || defaultConfig.student_name;
+      }
+      
+      const enrollmentIdEl = document.getElementById('enrollment-id');
+      if (enrollmentIdEl) {
+        enrollmentIdEl.textContent = config.enrollment_id || defaultConfig.enrollment_id;
+      }
+      
+      const pageTitleEl = document.getElementById('page-title');
+      if (pageTitleEl) {
+        pageTitleEl.textContent = config.page_title || defaultConfig.page_title;
+      }
+      
+      const descriptionEl = document.getElementById('page-description');
+      if (descriptionEl) {
+        descriptionEl.textContent = config.page_description || defaultConfig.page_description;
+      }
+      
+      const header = document.getElementById('main-header');
+      if (header) {
+        header.style.backgroundColor = config.primary_color || defaultConfig.primary_color;
+      }
+      
+      document.body.style.backgroundColor = config.secondary_color || defaultConfig.secondary_color;
+      document.body.style.color = config.text_color || defaultConfig.text_color;
+    }
+    
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              cfg.primary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              cfg.secondary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              cfg.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['student_name', cfg.student_name || defaultConfig.student_name],
+        ['enrollment_id', cfg.enrollment_id || defaultConfig.enrollment_id],
+        ['program_name', cfg.program_name || defaultConfig.program_name],
+        ['page_title', cfg.page_title || defaultConfig.page_title],
+        ['page_description', cfg.page_description || defaultConfig.page_description]
+      ]);
+    }
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c6a8076b5af8513',t:'MTc2OTg3NjA2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

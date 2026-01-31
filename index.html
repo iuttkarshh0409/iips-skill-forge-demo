@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IIPS Skill Forge - Student Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .heading-font {
+      font-family: 'Merriweather', Georgia, serif;
+    }
+    .sidebar-item {
+      transition: all 0.2s ease;
+    }
+    .sidebar-item:hover {
+      transform: translateX(4px);
+    }
+    .subject-card {
+      transition: all 0.25s ease;
+    }
+    .subject-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .progress-bar {
+      transition: width 0.8s ease-out;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-slate-50 text-slate-700">
+  <div class="h-full w-full flex flex-col overflow-hidden"><!-- Top Header -->
+   <header id="main-header" class="bg-slate-800 text-white px-6 py-4 flex items-center justify-between shadow-md flex-shrink-0">
+    <div class="flex items-center gap-4">
+     <div class="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      </svg>
+     </div>
+     <div>
+      <h1 class="heading-font text-xl font-bold tracking-tight">IIPS Skill Forge</h1>
+      <p class="text-slate-400 text-xs">Learning Management System</p>
+     </div>
+    </div>
+    <div class="flex items-center gap-6">
+     <div class="hidden md:flex items-center gap-2 text-slate-300 text-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg><span>Semester III</span>
+     </div><button class="relative p-2 text-slate-300 hover:text-white transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      </svg><span class="absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full"></span> </button>
+     <div class="flex items-center gap-3 pl-4 border-l border-slate-600">
+      <div class="text-right hidden sm:block">
+       <p id="student-name" class="text-sm font-medium">Aryan Sharma</p>
+       <p id="enrollment-id" class="text-xs text-slate-400">MCA/2024/045</p>
+      </div>
+      <div class="w-9 h-9 bg-slate-600 rounded-full flex items-center justify-center text-sm font-semibold border-2 border-amber-500">
+       AS
+      </div>
+     </div>
+    </div>
+   </header>
+   <div class="flex flex-1 overflow-hidden"><!-- Left Sidebar -->
+    <aside id="sidebar" class="w-56 bg-white border-r border-slate-200 flex-shrink-0 hidden md:flex flex-col">
+     <nav class="flex-1 py-6 px-4">
+      <ul class="space-y-1">
+       <li><a href="dashboard.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg bg-slate-800 text-white font-medium">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+         </svg> Dashboard </a></li>
+       <li><a href="subjects.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+         </svg> Subjects </a></li>
+       <li><a href="progress.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+         </svg> Progress </a></li>
+       <li><a href="mcq.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+         </svg> MCQs </a></li>
+       <li><a href="resources.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+         </svg> Resources </a></li>
+      </ul>
+     </nav>
+     <div class="p-4 border-t border-slate-200">
+      <div class="bg-slate-50 rounded-lg p-4">
+       <p class="text-xs text-slate-500 mb-2">Overall Progress</p>
+       <div class="flex items-end gap-2"><span class="text-2xl font-bold text-slate-800">68%</span> <span class="text-xs text-emerald-600 mb-1">↑ 5% this week</span>
+       </div>
+       <div class="mt-2 h-2 bg-slate-200 rounded-full overflow-hidden">
+        <div class="progress-bar h-full bg-amber-500 rounded-full" style="width: 68%"></div>
+       </div>
+      </div>
+     </div>
+    </aside><!-- Main Content -->
+    <main class="flex-1 overflow-y-auto bg-slate-50 p-6"><!-- Welcome Section -->
+     <div class="mb-8">
+      <h2 id="welcome-message" class="heading-font text-2xl font-bold text-slate-800 mb-1">Welcome back, Aryan</h2>
+      <p id="program-name" class="text-slate-500">Master of Computer Applications • Semester III</p>
+     </div><!-- Quick Stats -->
+     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+       <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+         <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+         </svg>
+        </div><span class="text-sm text-slate-500">Subjects</span>
+       </div>
+       <p class="text-3xl font-bold text-slate-800">5</p>
+       <p class="text-xs text-slate-400 mt-1">Enrolled this sem</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+       <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
+         <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div><span class="text-sm text-slate-500">MCQs Done</span>
+       </div>
+       <p class="text-3xl font-bold text-slate-800">247</p>
+       <p class="text-xs text-slate-400 mt-1">78% accuracy</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+       <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center">
+         <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div><span class="text-sm text-slate-500">Study Hours</span>
+       </div>
+       <p class="text-3xl font-bold text-slate-800">42h</p>
+       <p class="text-xs text-slate-400 mt-1">This month</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+       <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
+         <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div><span class="text-sm text-slate-500">Streak</span>
+       </div>
+       <p class="text-3xl font-bold text-slate-800">12</p>
+       <p class="text-xs text-slate-400 mt-1">Days active</p>
+      </div>
+     </div><!-- Subject Cards Section -->
+     <section class="mb-8">
+      <div class="flex items-center justify-between mb-5">
+       <h3 class="heading-font text-lg font-bold text-slate-800">Enrolled Subjects</h3><a href="#" class="text-sm text-slate-500 hover:text-slate-700 flex items-center gap-1"> View all 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg></a>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5"><!-- Subject Card 1 -->
+       <div class="subject-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-100">
+         <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+           <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center"><span class="text-blue-600 font-bold text-sm">DAA</span>
+           </div>
+           <div>
+            <h4 class="font-semibold text-slate-800">Design &amp; Analysis of Algorithms</h4>
+            <p class="text-xs text-slate-400">MCA301 • 4 Credits</p>
+           </div>
+          </div>
+         </div><!-- Unit Progress -->
+         <div class="space-y-3 mt-4">
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 1: Fundamentals</span> <span class="text-slate-500">100%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 2: Divide &amp; Conquer</span> <span class="text-slate-500">85%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-emerald-500 rounded-full" style="width: 85%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 3: Dynamic Programming</span> <span class="text-slate-500">60%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-amber-500 rounded-full" style="width: 60%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 4: Graph Algorithms</span> <span class="text-slate-500">30%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-orange-500 rounded-full" style="width: 30%"></div>
+           </div>
+          </div>
+         </div>
+        </div><!-- MCQ Performance -->
+        <div class="px-5 py-4 bg-slate-50 flex items-center justify-between">
+         <div class="flex items-center gap-4">
+          <div class="text-center">
+           <p class="text-lg font-bold text-slate-800">82%</p>
+           <p class="text-xs text-slate-500">MCQ Score</p>
+          </div>
+          <div class="w-px h-8 bg-slate-200"></div>
+          <div class="text-center">
+           <p class="text-lg font-bold text-slate-800">8.5h</p>
+           <p class="text-xs text-slate-500">Time Spent</p>
+          </div>
+         </div><button class="px-4 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors"> Continue </button>
+        </div>
+       </div><!-- Subject Card 2 -->
+       <div class="subject-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-100">
+         <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+           <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center"><span class="text-emerald-600 font-bold text-sm">DBMS</span>
+           </div>
+           <div>
+            <h4 class="font-semibold text-slate-800">Database Management Systems</h4>
+            <p class="text-xs text-slate-400">MCA302 • 4 Credits</p>
+           </div>
+          </div>
+         </div>
+         <div class="space-y-3 mt-4">
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 1: ER Modeling</span> <span class="text-slate-500">100%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 2: Relational Model</span> <span class="text-slate-500">100%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 3: SQL &amp; PL/SQL</span> <span class="text-slate-500">75%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-emerald-500 rounded-full" style="width: 75%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 4: Normalization</span> <span class="text-slate-500">45%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-amber-500 rounded-full" style="width: 45%"></div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="px-5 py-4 bg-slate-50 flex items-center justify-between">
+         <div class="flex items-center gap-4">
+          <div class="text-center">
+           <p class="text-lg font-bold text-slate-800">91%</p>
+           <p class="text-xs text-slate-500">MCQ Score</p>
+          </div>
+          <div class="w-px h-8 bg-slate-200"></div>
+          <div class="text-center">
+           <p class="text-lg font-bold text-slate-800">12.2h</p>
+           <p class="text-xs text-slate-500">Time Spent</p>
+          </div>
+         </div><button class="px-4 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors"> Continue </button>
+        </div>
+       </div><!-- Subject Card 3 -->
+       <div class="subject-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-100">
+         <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+           <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center"><span class="text-purple-600 font-bold text-sm">OS</span>
+           </div>
+           <div>
+            <h4 class="font-semibold text-slate-800">Operating Systems</h4>
+            <p class="text-xs text-slate-400">MCA303 • 4 Credits</p>
+           </div>
+          </div>
+         </div>
+         <div class="space-y-3 mt-4">
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 1: Process Management</span> <span class="text-slate-500">100%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 2: CPU Scheduling</span> <span class="text-slate-500">70%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-emerald-500 rounded-full" style="width: 70%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 3: Memory Management</span> <span class="text-slate-500">40%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-amber-500 rounded-full" style="width: 40%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between text-xs mb-1"><span class="text-slate-600">Unit 4: File Systems</span> <span class="text-slate-500">15%</span>
+           </div>
+           <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="progress-bar h-full bg-red-400 rounded-full" style="width: 15%"></div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="px-5 py-4 bg-slate-50 flex items-center justify-between">
+         <div class="flex items-center gap-4">
+          <div class="text-center">
+           <p class="text-lg font-bold text-slate-800">68%</p>
+           <p class="text-xs text-slate-500">MCQ Score</p>
+          </div>
+          <div class="w-px h-8 bg-slate-200"></div>
+          <div class="text-center">
+           <p class="text-lg font-bold text-slate-800">6.8h</p>
+           <p class="text-xs text-slate-500">Time Spent</p>
+          </div>
+         </div><button class="px-4 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors"> Continue </button>
+        </div>
+       </div>
+      </div>
+     </section><!-- Strengths & Weak Areas + Time Summary -->
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6"><!-- Strengths & Weak Areas -->
+      <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+       <h3 class="heading-font text-lg font-bold text-slate-800 mb-5">Performance Analysis</h3><!-- Strengths -->
+       <div class="mb-6">
+        <div class="flex items-center gap-2 mb-3">
+         <div class="w-6 h-6 bg-emerald-100 rounded flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+         </div>
+         <h4 class="font-semibold text-slate-700">Strong Areas</h4>
+        </div>
+        <div class="space-y-2">
+         <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+          <div class="flex items-center gap-3"><span class="text-lg">📊</span> <span class="text-sm font-medium text-slate-700">SQL Queries &amp; Joins</span>
+          </div><span class="text-sm font-bold text-emerald-600">94%</span>
+         </div>
+         <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+          <div class="flex items-center gap-3"><span class="text-lg">🔄</span> <span class="text-sm font-medium text-slate-700">Sorting Algorithms</span>
+          </div><span class="text-sm font-bold text-emerald-600">89%</span>
+         </div>
+         <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+          <div class="flex items-center gap-3"><span class="text-lg">🗄️</span> <span class="text-sm font-medium text-slate-700">ER Diagrams</span>
+          </div><span class="text-sm font-bold text-emerald-600">87%</span>
+         </div>
+        </div>
+       </div><!-- Weak Areas -->
+       <div>
+        <div class="flex items-center gap-2 mb-3">
+         <div class="w-6 h-6 bg-orange-100 rounded flex items-center justify-center">
+          <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+         </div>
+         <h4 class="font-semibold text-slate-700">Needs Improvement</h4>
+        </div>
+        <div class="space-y-2">
+         <div class="flex items-center justify-between p-3 bg-orange-50 rounded-lg border border-orange-100">
+          <div class="flex items-center gap-3"><span class="text-lg">🧮</span> <span class="text-sm font-medium text-slate-700">Dynamic Programming</span>
+          </div><span class="text-sm font-bold text-orange-600">52%</span>
+         </div>
+         <div class="flex items-center justify-between p-3 bg-orange-50 rounded-lg border border-orange-100">
+          <div class="flex items-center gap-3"><span class="text-lg">💾</span> <span class="text-sm font-medium text-slate-700">Memory Management</span>
+          </div><span class="text-sm font-bold text-orange-600">48%</span>
+         </div>
+         <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-100">
+          <div class="flex items-center gap-3"><span class="text-lg">📈</span> <span class="text-sm font-medium text-slate-700">Graph Algorithms</span>
+          </div><span class="text-sm font-bold text-red-500">38%</span>
+         </div>
+        </div>
+       </div>
+      </section><!-- Time Spent Summary -->
+      <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+       <h3 class="heading-font text-lg font-bold text-slate-800 mb-5">Time Distribution</h3>
+       <div class="space-y-4">
+        <div>
+         <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-3">
+           <div class="w-3 h-3 rounded-full bg-blue-500"></div><span class="text-sm font-medium text-slate-700">Design &amp; Analysis of Algorithms</span>
+          </div><span class="text-sm font-bold text-slate-600">8.5h</span>
+         </div>
+         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-blue-500 rounded-full" style="width: 20%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-3">
+           <div class="w-3 h-3 rounded-full bg-emerald-500"></div><span class="text-sm font-medium text-slate-700">Database Management Systems</span>
+          </div><span class="text-sm font-bold text-slate-600">12.2h</span>
+         </div>
+         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-emerald-500 rounded-full" style="width: 29%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-3">
+           <div class="w-3 h-3 rounded-full bg-purple-500"></div><span class="text-sm font-medium text-slate-700">Operating Systems</span>
+          </div><span class="text-sm font-bold text-slate-600">6.8h</span>
+         </div>
+         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-purple-500 rounded-full" style="width: 16%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-3">
+           <div class="w-3 h-3 rounded-full bg-amber-500"></div><span class="text-sm font-medium text-slate-700">Computer Networks</span>
+          </div><span class="text-sm font-bold text-slate-600">9.1h</span>
+         </div>
+         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-amber-500 rounded-full" style="width: 22%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-3">
+           <div class="w-3 h-3 rounded-full bg-rose-500"></div><span class="text-sm font-medium text-slate-700">Software Engineering</span>
+          </div><span class="text-sm font-bold text-slate-600">5.4h</span>
+         </div>
+         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-rose-500 rounded-full" style="width: 13%"></div>
+         </div>
+        </div>
+       </div>
+       <div class="mt-6 pt-5 border-t border-slate-200">
+        <div class="flex items-center justify-between">
+         <div>
+          <p class="text-sm text-slate-500">Total Study Time</p>
+          <p class="text-2xl font-bold text-slate-800">42.0 hours</p>
+         </div>
+         <div class="text-right">
+          <p class="text-sm text-slate-500">Weekly Average</p>
+          <p class="text-2xl font-bold text-slate-800">10.5h</p>
+         </div>
+        </div>
+        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
+         <p class="text-xs text-blue-700">💡 <strong>Tip:</strong> Consider allocating more time to Graph Algorithms and Memory Management based on your assessment performance.</p>
+        </div>
+       </div>
+      </section>
+     </div>
+    </main>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      student_name: 'Aryan Sharma',
+      enrollment_id: 'MCA/2024/045',
+      program_name: 'Master of Computer Applications • Semester III',
+      welcome_message: 'Welcome back, Aryan',
+      primary_color: '#1e293b',
+      secondary_color: '#f8fafc',
+      text_color: '#334155',
+      accent_color: '#f59e0b',
+      surface_color: '#ffffff'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      // Update student name
+      const studentNameEl = document.getElementById('student-name');
+      if (studentNameEl) {
+        studentNameEl.textContent = config.student_name || defaultConfig.student_name;
+      }
+      
+      // Update enrollment ID
+      const enrollmentIdEl = document.getElementById('enrollment-id');
+      if (enrollmentIdEl) {
+        enrollmentIdEl.textContent = config.enrollment_id || defaultConfig.enrollment_id;
+      }
+      
+      // Update program name
+      const programNameEl = document.getElementById('program-name');
+      if (programNameEl) {
+        programNameEl.textContent = config.program_name || defaultConfig.program_name;
+      }
+      
+      // Update welcome message
+      const welcomeEl = document.getElementById('welcome-message');
+      if (welcomeEl) {
+        welcomeEl.textContent = config.welcome_message || defaultConfig.welcome_message;
+      }
+      
+      // Update colors
+      const header = document.getElementById('main-header');
+      if (header) {
+        header.style.backgroundColor = config.primary_color || defaultConfig.primary_color;
+      }
+      
+      document.body.style.backgroundColor = config.secondary_color || defaultConfig.secondary_color;
+      document.body.style.color = config.text_color || defaultConfig.text_color;
+    }
+    
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              cfg.primary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              cfg.secondary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              cfg.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['student_name', cfg.student_name || defaultConfig.student_name],
+        ['enrollment_id', cfg.enrollment_id || defaultConfig.enrollment_id],
+        ['program_name', cfg.program_name || defaultConfig.program_name],
+        ['welcome_message', cfg.welcome_message || defaultConfig.welcome_message]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c6a3ad7637d4907',t:'MTc2OTg3MzIxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

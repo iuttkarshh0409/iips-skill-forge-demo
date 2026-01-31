@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IIPS Skill Forge - MCQs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstapi.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .heading-font {
+      font-family: 'Merriweather', Georgia, serif;
+    }
+    .sidebar-item {
+      transition: all 0.2s ease;
+    }
+    .sidebar-item:hover {
+      transform: translateX(4px);
+    }
+    .unit-card {
+      transition: all 0.25s ease;
+    }
+    .unit-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+    }
+    .status-completed {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+    .status-pending {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+    .status-not-attempted {
+      background-color: #f3f4f6;
+      color: #4b5563;
+    }
+    .breadcrumb-item {
+      display: inline-flex;
+      align-items: center;
+    }
+    .breadcrumb-separator {
+      margin: 0 0.5rem;
+      color: #cbd5e1;
+    }
+    .score-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-slate-50 text-slate-700">
+  <div class="h-full w-full flex flex-col overflow-hidden"><!-- Top Header -->
+   <header id="main-header" class="bg-slate-800 text-white px-6 py-4 flex items-center justify-between shadow-md flex-shrink-0">
+    <div class="flex items-center gap-4">
+     <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      </svg>
+     </div>
+     <div>
+      <h1 class="heading-font text-xl font-bold tracking-tight">IIPS Skill Forge</h1>
+      <p class="text-slate-400 text-xs">Learning Management System</p>
+     </div>
+    </div>
+    <div class="flex items-center gap-6">
+     <div class="hidden md:flex items-center gap-2 text-slate-300 text-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg><span>Semester III</span>
+     </div><button class="relative p-2 text-slate-300 hover:text-white transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      </svg><span class="absolute top-1 right-1 w-2 h-2 bg-blue-400 rounded-full"></span> </button>
+     <div class="flex items-center gap-3 pl-4 border-l border-slate-600">
+      <div class="text-right hidden sm:block">
+       <p id="student-name" class="text-sm font-medium">Aryan Sharma</p>
+       <p id="enrollment-id" class="text-xs text-slate-400">MCA/2024/045</p>
+      </div>
+      <div class="w-9 h-9 bg-slate-600 rounded-full flex items-center justify-center text-sm font-semibold border-2 border-blue-400">
+       AS
+      </div>
+     </div>
+    </div>
+   </header>
+   <div class="flex flex-1 overflow-hidden"><!-- Left Sidebar -->
+    <aside id="sidebar" class="w-56 bg-white border-r border-slate-200 flex-shrink-0 hidden md:flex flex-col">
+     <nav class="flex-1 py-6 px-4">
+      <ul class="space-y-1">
+       <li><a href="index.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+         </svg> Dashboard </a></li>
+       <li><a href="subjects.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+         </svg> Subjects </a></li>
+       <li><a href="progress.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+         </svg> Progress </a></li>
+       <li><a href="mcq.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg bg-slate-800 text-white font-medium">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+         </svg> MCQs </a></li>
+       <li><a href="resources.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+         </svg> Resources </a></li>
+      </ul>
+     </nav>
+     <div class="p-4 border-t border-slate-200">
+      <div class="bg-blue-50 rounded-lg p-4">
+       <p class="text-xs text-slate-600 mb-2">Overall Progress</p>
+       <div class="flex items-end gap-2"><span class="text-2xl font-bold text-slate-800">68%</span> <span class="text-xs text-emerald-600 mb-1">↑ 5% this week</span>
+       </div>
+       <div class="mt-3 h-2 bg-slate-200 rounded-full overflow-hidden">
+        <div class="h-full bg-blue-500 rounded-full" style="width: 68%"></div>
+       </div>
+      </div>
+     </div>
+    </aside><!-- Main Content -->
+    <main class="flex-1 overflow-y-auto bg-slate-50 p-6"><!-- Breadcrumb Navigation -->
+     <div class="mb-8">
+      <div class="flex items-center text-sm text-slate-600 mb-6"><a href="#" class="breadcrumb-item hover:text-slate-800 transition-colors">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-3m0 0l7-4 7 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9m-9 16l-7-4m0 0l-2-3m16 3l2-3m0 0l7-4" />
+        </svg> Dashboard </a> <span class="breadcrumb-separator">/</span> <span class="breadcrumb-item text-slate-700 font-medium">MCQs</span>
+      </div><!-- Page Header -->
+      <div>
+       <h1 id="page-title" class="heading-font text-3xl font-bold text-slate-800 mb-2">MCQs</h1>
+       <p id="page-description" class="text-slate-500 text-base">Practice and assess your knowledge through subject-wise multiple choice questions</p>
+      </div>
+     </div><!-- Subject Selector Section -->
+     <section class="mb-6">
+      <div class="flex items-center gap-3 mb-4"><label for="subject-select" class="text-sm font-semibold text-slate-700">Select Subject:</label> <select id="subject-select" class="px-4 py-2.5 bg-white border border-slate-300 rounded-lg text-slate-700 font-medium shadow-sm hover:border-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 transition-colors cursor-pointer"> <option value="all">All Subjects</option> <option value="dbms">Database Management Systems (MCA302)</option> <option value="daa">Design &amp; Analysis of Algorithms (MCA301)</option> <option value="os">Operating Systems (MCA303)</option> <option value="cn">Computer Networks (MCA304)</option> <option value="se">Software Engineering (MCA305)</option> </select>
+      </div>
+     </section><!-- MCQ List Container -->
+     <section id="mcq-container" class="space-y-4"><!-- DBMS Units -->
+      <div class="mcq-subject-group" data-subject="dbms">
+       <div class="mb-4">
+        <h2 class="text-lg font-semibold text-slate-800 flex items-center gap-2"><span class="inline-block w-1 h-6 bg-blue-500 rounded"></span> Database Management Systems</h2>
+        <p class="text-sm text-slate-500 mt-1">MCA302 • 4 Units</p>
+       </div><!-- Unit 1 - DBMS -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 1: Database Concepts &amp; Architecture</h3><span class="status-badge status-completed">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg> COMPLETED </span>
+          </div>
+          <p class="text-sm text-slate-600">Understand fundamental concepts of database systems and their architecture</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-2xl font-bold text-emerald-600">94%</span> <span class="text-xs text-slate-500">Score</span>
+          </div><button class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors"> View Result </button>
+         </div>
+        </div>
+       </div><!-- Unit 2 - DBMS -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 2: SQL Queries &amp; Joins</h3><span class="status-badge status-completed">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg> COMPLETED </span>
+          </div>
+          <p class="text-sm text-slate-600">Master SQL syntax and different types of joins in relational databases</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-2xl font-bold text-emerald-600">96%</span> <span class="text-xs text-slate-500">Score</span>
+          </div><button class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors"> View Result </button>
+         </div>
+        </div>
+       </div><!-- Unit 3 - DBMS -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 3: Normalization &amp; ER Diagrams</h3><span class="status-badge status-completed">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg> COMPLETED </span>
+          </div>
+          <p class="text-sm text-slate-600">Learn database design principles and entity-relationship modeling</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-2xl font-bold text-emerald-600">87%</span> <span class="text-xs text-slate-500">Score</span>
+          </div><button class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors"> View Result </button>
+         </div>
+        </div>
+       </div><!-- Unit 4 - DBMS -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 4: Transactions &amp; Concurrency</h3><span class="status-badge status-pending">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 11-2 0 1 1 0 012 0z" />
+            </svg> IN PROGRESS </span>
+          </div>
+          <p class="text-sm text-slate-600">Understand transaction processing and concurrent access control mechanisms</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not completed</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div>
+      </div><!-- DAA Units -->
+      <div class="mcq-subject-group" data-subject="daa">
+       <div class="mb-4 mt-6">
+        <h2 class="text-lg font-semibold text-slate-800 flex items-center gap-2"><span class="inline-block w-1 h-6 bg-blue-500 rounded"></span> Design &amp; Analysis of Algorithms</h2>
+        <p class="text-sm text-slate-500 mt-1">MCA301 • 4 Units</p>
+       </div><!-- Unit 1 - DAA -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 1: Algorithm Complexity Analysis</h3><span class="status-badge status-completed">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg> COMPLETED </span>
+          </div>
+          <p class="text-sm text-slate-600">Big O notation, time complexity, and space complexity analysis</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-2xl font-bold text-emerald-600">81%</span> <span class="text-xs text-slate-500">Score</span>
+          </div><button class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors"> View Result </button>
+         </div>
+        </div>
+       </div><!-- Unit 2 - DAA -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 2: Sorting Algorithms</h3><span class="status-badge status-completed">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg> COMPLETED </span>
+          </div>
+          <p class="text-sm text-slate-600">Quick Sort, Merge Sort, Heap Sort, and comparison with other algorithms</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-2xl font-bold text-emerald-600">89%</span> <span class="text-xs text-slate-500">Score</span>
+          </div><button class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors"> View Result </button>
+         </div>
+        </div>
+       </div><!-- Unit 3 - DAA -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 3: Dynamic Programming</h3><span class="status-badge status-not-attempted">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" />
+            </svg> NOT ATTEMPTED </span>
+          </div>
+          <p class="text-sm text-slate-600">Memoization, optimal substructure, and practical DP problems</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not attempted</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div><!-- Unit 4 - DAA -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 4: Graph Algorithms</h3><span class="status-badge status-not-attempted">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" />
+            </svg> NOT ATTEMPTED </span>
+          </div>
+          <p class="text-sm text-slate-600">BFS, DFS, Dijkstra, and graph traversal techniques</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not attempted</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div>
+      </div><!-- Operating Systems Units -->
+      <div class="mcq-subject-group" data-subject="os">
+       <div class="mb-4 mt-6">
+        <h2 class="text-lg font-semibold text-slate-800 flex items-center gap-2"><span class="inline-block w-1 h-6 bg-amber-500 rounded"></span> Operating Systems</h2>
+        <p class="text-sm text-slate-500 mt-1">MCA303 • 4 Units</p>
+       </div><!-- Unit 1 - OS -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 1: Process Management</h3><span class="status-badge status-completed">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg> COMPLETED </span>
+          </div>
+          <p class="text-sm text-slate-600">Processes, threads, scheduling algorithms, and context switching</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-2xl font-bold text-emerald-600">72%</span> <span class="text-xs text-slate-500">Score</span>
+          </div><button class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors"> View Result </button>
+         </div>
+        </div>
+       </div><!-- Unit 2 - OS -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 2: Memory Management</h3><span class="status-badge status-pending">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 11-2 0 1 1 0 012 0z" />
+            </svg> IN PROGRESS </span>
+          </div>
+          <p class="text-sm text-slate-600">Virtual memory, paging, segmentation, and page replacement algorithms</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not completed</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div><!-- Unit 3 - OS -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 3: File Systems</h3><span class="status-badge status-not-attempted">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" />
+            </svg> NOT ATTEMPTED </span>
+          </div>
+          <p class="text-sm text-slate-600">File allocation methods, directory structures, and I/O systems</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not attempted</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div><!-- Unit 4 - OS -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 4: Deadlock &amp; Synchronization</h3><span class="status-badge status-not-attempted">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" />
+            </svg> NOT ATTEMPTED </span>
+          </div>
+          <p class="text-sm text-slate-600">Deadlock detection, prevention, and synchronization primitives</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not attempted</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div>
+      </div><!-- Computer Networks Units -->
+      <div class="mcq-subject-group" data-subject="cn">
+       <div class="mb-4 mt-6">
+        <h2 class="text-lg font-semibold text-slate-800 flex items-center gap-2"><span class="inline-block w-1 h-6 bg-slate-500 rounded"></span> Computer Networks</h2>
+        <p class="text-sm text-slate-500 mt-1">MCA304 • 4 Units</p>
+       </div><!-- Unit 1 - CN -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 1: Network Basics &amp; OSI Model</h3><span class="status-badge status-completed">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg> COMPLETED </span>
+          </div>
+          <p class="text-sm text-slate-600">Network models, layers, and protocol stack fundamentals</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-2xl font-bold text-emerald-600">78%</span> <span class="text-xs text-slate-500">Score</span>
+          </div><button class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors"> View Result </button>
+         </div>
+        </div>
+       </div><!-- Unit 2 - CN -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 2: TCP/IP &amp; Transport Layer</h3><span class="status-badge status-pending">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 11-2 0 1 1 0 012 0z" />
+            </svg> IN PROGRESS </span>
+          </div>
+          <p class="text-sm text-slate-600">TCP, UDP protocols, port numbers, and connection management</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not completed</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div><!-- Unit 3 - CN -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 3: IP Addressing &amp; Routing</h3><span class="status-badge status-not-attempted">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" />
+            </svg> NOT ATTEMPTED </span>
+          </div>
+          <p class="text-sm text-slate-600">IPv4, IPv6, subnetting, and routing algorithms</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not attempted</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div><!-- Unit 4 - CN -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 4: Application Layer Protocols</h3><span class="status-badge status-not-attempted">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" />
+            </svg> NOT ATTEMPTED </span>
+          </div>
+          <p class="text-sm text-slate-600">HTTP, FTP, DNS, SMTP, and other application protocols</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not attempted</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div>
+      </div><!-- Software Engineering Units -->
+      <div class="mcq-subject-group" data-subject="se">
+       <div class="mb-4 mt-6">
+        <h2 class="text-lg font-semibold text-slate-800 flex items-center gap-2"><span class="inline-block w-1 h-6 bg-orange-500 rounded"></span> Software Engineering</h2>
+        <p class="text-sm text-slate-500 mt-1">MCA305 • 3 Units</p>
+       </div><!-- Unit 1 - SE -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 1: Software Development Lifecycle</h3><span class="status-badge status-completed">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg> COMPLETED </span>
+          </div>
+          <p class="text-sm text-slate-600">SDLC models, phases, and software development methodologies</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-2xl font-bold text-emerald-600">68%</span> <span class="text-xs text-slate-500">Score</span>
+          </div><button class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors"> View Result </button>
+         </div>
+        </div>
+       </div><!-- Unit 2 - SE -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 2: Requirements &amp; Design</h3><span class="status-badge status-not-attempted">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" />
+            </svg> NOT ATTEMPTED </span>
+          </div>
+          <p class="text-sm text-slate-600">Requirements gathering, design patterns, and architectural decisions</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not attempted</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div><!-- Unit 3 - SE -->
+       <div class="unit-card bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+         <div class="flex-grow">
+          <div class="flex items-center gap-3 mb-2">
+           <h3 class="font-semibold text-slate-800">Unit 3: Testing &amp; QA</h3><span class="status-badge status-not-attempted">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" />
+            </svg> NOT ATTEMPTED </span>
+          </div>
+          <p class="text-sm text-slate-600">Testing strategies, quality assurance, and debugging techniques</p>
+         </div>
+         <div class="flex-shrink-0 text-right">
+          <div class="score-display mb-3"><span class="text-xs text-slate-600">Not attempted</span>
+          </div><button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"> Attempt MCQ </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </main>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      student_name: 'Aryan Sharma',
+      enrollment_id: 'MCA/2024/045',
+      program_name: 'Master of Computer Applications • Semester III',
+      page_title: 'MCQs',
+      page_description: 'Practice and assess your knowledge through subject-wise multiple choice questions',
+      primary_color: '#1e293b',
+      secondary_color: '#f8fafc',
+      text_color: '#334155',
+      accent_color: '#3b82f6',
+      surface_color: '#ffffff'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Subject filter functionality
+    const subjectSelect = document.getElementById('subject-select');
+    const mcqGroups = document.querySelectorAll('.mcq-subject-group');
+    
+    subjectSelect.addEventListener('change', (e) => {
+      const selectedSubject = e.target.value;
+      
+      mcqGroups.forEach(group => {
+        const groupSubject = group.getAttribute('data-subject');
+        if (selectedSubject === 'all' || groupSubject === selectedSubject) {
+          group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    });
+    
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      const studentNameEl = document.getElementById('student-name');
+      if (studentNameEl) {
+        studentNameEl.textContent = config.student_name || defaultConfig.student_name;
+      }
+      
+      const enrollmentIdEl = document.getElementById('enrollment-id');
+      if (enrollmentIdEl) {
+        enrollmentIdEl.textContent = config.enrollment_id || defaultConfig.enrollment_id;
+      }
+      
+      const pageTitleEl = document.getElementById('page-title');
+      if (pageTitleEl) {
+        pageTitleEl.textContent = config.page_title || defaultConfig.page_title;
+      }
+      
+      const descriptionEl = document.getElementById('page-description');
+      if (descriptionEl) {
+        descriptionEl.textContent = config.page_description || defaultConfig.page_description;
+      }
+      
+      const header = document.getElementById('main-header');
+      if (header) {
+        header.style.backgroundColor = config.primary_color || defaultConfig.primary_color;
+      }
+      
+      document.body.style.backgroundColor = config.secondary_color || defaultConfig.secondary_color;
+      document.body.style.color = config.text_color || defaultConfig.text_color;
+    }
+    
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              cfg.primary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              cfg.secondary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              cfg.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['student_name', cfg.student_name || defaultConfig.student_name],
+        ['enrollment_id', cfg.enrollment_id || defaultConfig.enrollment_id],
+        ['program_name', cfg.program_name || defaultConfig.program_name],
+        ['page_title', cfg.page_title || defaultConfig.page_title],
+        ['page_description', cfg.page_description || defaultConfig.page_description]
+      ]);
+    }
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c6a72f561d149a6',t:'MTc2OTg3NTUxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

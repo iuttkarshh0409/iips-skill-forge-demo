@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IIPS Skill Forge - Subjects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstapi.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .heading-font {
+      font-family: 'Merriweather', Georgia, serif;
+    }
+    .sidebar-item {
+      transition: all 0.2s ease;
+    }
+    .sidebar-item:hover {
+      transform: translateX(4px);
+    }
+    .subject-card {
+      transition: all 0.25s ease;
+    }
+    .subject-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .progress-bar {
+      transition: width 0.8s ease-out;
+    }
+    .breadcrumb-item {
+      display: inline-flex;
+      align-items: center;
+    }
+    .breadcrumb-separator {
+      margin: 0 0.5rem;
+      color: #cbd5e1;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-slate-50 text-slate-700">
+  <div class="h-full w-full flex flex-col overflow-hidden"><!-- Top Header -->
+   <header id="main-header" class="bg-slate-800 text-white px-6 py-4 flex items-center justify-between shadow-md flex-shrink-0">
+    <div class="flex items-center gap-4">
+     <div class="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      </svg>
+     </div>
+     <div>
+      <h1 class="heading-font text-xl font-bold tracking-tight">IIPS Skill Forge</h1>
+      <p class="text-slate-400 text-xs">Learning Management System</p>
+     </div>
+    </div>
+    <div class="flex items-center gap-6">
+     <div class="hidden md:flex items-center gap-2 text-slate-300 text-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg><span>Semester III</span>
+     </div><button class="relative p-2 text-slate-300 hover:text-white transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      </svg><span class="absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full"></span> </button>
+     <div class="flex items-center gap-3 pl-4 border-l border-slate-600">
+      <div class="text-right hidden sm:block">
+       <p id="student-name" class="text-sm font-medium">Aryan Sharma</p>
+       <p id="enrollment-id" class="text-xs text-slate-400">MCA/2024/045</p>
+      </div>
+      <div class="w-9 h-9 bg-slate-600 rounded-full flex items-center justify-center text-sm font-semibold border-2 border-amber-500">
+       AS
+      </div>
+     </div>
+    </div>
+   </header>
+   <div class="flex flex-1 overflow-hidden"><!-- Left Sidebar -->
+    <aside id="sidebar" class="w-56 bg-white border-r border-slate-200 flex-shrink-0 hidden md:flex flex-col">
+     <nav class="flex-1 py-6 px-4">
+      <ul class="space-y-1">
+       <li><a href="index.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+         </svg> Dashboard </a></li>
+       <li><a href="subjects.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg bg-slate-800 text-white font-medium">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+         </svg> Subjects </a></li>
+       <li><a href="progress.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+         </svg> Progress </a></li>
+       <li><a href="mcq.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+         </svg> MCQs </a></li>
+       <li><a href="resources.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-800">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+         </svg> Resources </a></li>
+      </ul>
+     </nav>
+     <div class="p-4 border-t border-slate-200">
+      <div class="bg-slate-50 rounded-lg p-4">
+       <p class="text-xs text-slate-500 mb-2">Overall Progress</p>
+       <div class="flex items-end gap-2"><span class="text-2xl font-bold text-slate-800">68%</span> <span class="text-xs text-emerald-600 mb-1">↑ 5% this week</span>
+       </div>
+       <div class="mt-2 h-2 bg-slate-200 rounded-full overflow-hidden">
+        <div class="progress-bar h-full bg-amber-500 rounded-full" style="width: 68%"></div>
+       </div>
+      </div>
+     </div>
+    </aside><!-- Main Content -->
+    <main class="flex-1 overflow-y-auto bg-slate-50 p-6"><!-- Breadcrumb Navigation -->
+     <div class="mb-6">
+      <div class="flex items-center text-sm text-slate-600"><a href="#" class="breadcrumb-item hover:text-slate-800 transition-colors">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-3m0 0l7-4 7 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9m-9 16l-7-4m0 0l-2-3m16 3l2-3m0 0l7-4" />
+        </svg> Dashboard </a> <span class="breadcrumb-separator">/</span> <span class="breadcrumb-item text-slate-700 font-medium">Subjects</span>
+      </div>
+     </div><!-- Page Header -->
+     <div class="mb-8">
+      <h1 id="page-title" class="heading-font text-3xl font-bold text-slate-800 mb-2">Subjects</h1>
+      <p class="text-slate-500">All enrolled subjects for this semester</p>
+     </div><!-- Filter/Sort Bar (Optional) -->
+     <div class="mb-6 flex items-center justify-between">
+      <div class="flex items-center gap-3"><span class="text-sm text-slate-600">Showing <strong>5</strong> subjects</span>
+      </div>
+      <div class="flex items-center gap-2"><button class="px-4 py-2 text-sm text-slate-600 hover:bg-white rounded-lg border border-slate-200 transition-colors">
+        <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+        </svg> Filter </button>
+      </div>
+     </div><!-- Subject Cards Grid -->
+     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5"><!-- Subject Card 1 -->
+      <div class="subject-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg">
+       <div class="p-6"><!-- Subject Header -->
+        <div class="flex items-start justify-between mb-4">
+         <div>
+          <h3 class="heading-font text-lg font-bold text-slate-800 mb-1">Design &amp; Analysis of Algorithms</h3>
+          <p class="text-sm text-slate-500">MCA301 • 4 Credits</p>
+         </div>
+         <div class="text-right"><span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">Semester III</span>
+         </div>
+        </div><!-- Subject Details -->
+        <div class="space-y-4 mb-5 py-4 border-y border-slate-100">
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+           </svg><span>Units</span>
+          </div><span class="font-semibold text-slate-800">4</span>
+         </div>
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+           </svg><span>MCQs</span>
+          </div><span class="font-semibold text-slate-800">82/100</span>
+         </div>
+        </div><!-- Progress Section -->
+        <div class="mb-6">
+         <div class="flex items-center justify-between mb-3"><span class="text-sm font-medium text-slate-700">Overall Progress</span> <span class="text-sm font-bold text-slate-800">79%</span>
+         </div>
+         <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+          <div class="progress-bar h-full bg-blue-500 rounded-full" style="width: 79%"></div>
+         </div>
+        </div><!-- MCQ Status Indicator -->
+        <div class="mb-5 flex items-center gap-2 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+         <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+         </svg><span class="text-xs text-emerald-700"><strong>82%</strong> MCQ completion</span>
+        </div><!-- Button --> <button id="view-button" class="w-full px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors"> View Units </button>
+       </div>
+      </div><!-- Subject Card 2 -->
+      <div class="subject-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg">
+       <div class="p-6">
+        <div class="flex items-start justify-between mb-4">
+         <div>
+          <h3 class="heading-font text-lg font-bold text-slate-800 mb-1">Database Management Systems</h3>
+          <p class="text-sm text-slate-500">MCA302 • 4 Credits</p>
+         </div>
+         <div class="text-right"><span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">Semester III</span>
+         </div>
+        </div>
+        <div class="space-y-4 mb-5 py-4 border-y border-slate-100">
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+           </svg><span>Units</span>
+          </div><span class="font-semibold text-slate-800">4</span>
+         </div>
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+           </svg><span>MCQs</span>
+          </div><span class="font-semibold text-slate-800">91/100</span>
+         </div>
+        </div>
+        <div class="mb-6">
+         <div class="flex items-center justify-between mb-3"><span class="text-sm font-medium text-slate-700">Overall Progress</span> <span class="text-sm font-bold text-slate-800">88%</span>
+         </div>
+         <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+          <div class="progress-bar h-full bg-emerald-500 rounded-full" style="width: 88%"></div>
+         </div>
+        </div>
+        <div class="mb-5 flex items-center gap-2 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+         <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+         </svg><span class="text-xs text-emerald-700"><strong>91%</strong> MCQ completion</span>
+        </div><button id="view-button" class="w-full px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors"> View Units </button>
+       </div>
+      </div><!-- Subject Card 3 -->
+      <div class="subject-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg">
+       <div class="p-6">
+        <div class="flex items-start justify-between mb-4">
+         <div>
+          <h3 class="heading-font text-lg font-bold text-slate-800 mb-1">Operating Systems</h3>
+          <p class="text-sm text-slate-500">MCA303 • 4 Credits</p>
+         </div>
+         <div class="text-right"><span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded-full">Semester III</span>
+         </div>
+        </div>
+        <div class="space-y-4 mb-5 py-4 border-y border-slate-100">
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+           </svg><span>Units</span>
+          </div><span class="font-semibold text-slate-800">4</span>
+         </div>
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+           </svg><span>MCQs</span>
+          </div><span class="font-semibold text-slate-800">68/100</span>
+         </div>
+        </div>
+        <div class="mb-6">
+         <div class="flex items-center justify-between mb-3"><span class="text-sm font-medium text-slate-700">Overall Progress</span> <span class="text-sm font-bold text-slate-800">56%</span>
+         </div>
+         <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+          <div class="progress-bar h-full bg-amber-500 rounded-full" style="width: 56%"></div>
+         </div>
+        </div>
+        <div class="mb-5 flex items-center gap-2 p-3 bg-amber-50 rounded-lg border border-amber-100">
+         <svg class="w-4 h-4 text-amber-600 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+         </svg><span class="text-xs text-amber-700"><strong>68%</strong> MCQ completion</span>
+        </div><button id="view-button" class="w-full px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors"> View Units </button>
+       </div>
+      </div><!-- Subject Card 4 -->
+      <div class="subject-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg">
+       <div class="p-6">
+        <div class="flex items-start justify-between mb-4">
+         <div>
+          <h3 class="heading-font text-lg font-bold text-slate-800 mb-1">Computer Networks</h3>
+          <p class="text-sm text-slate-500">MCA304 • 4 Credits</p>
+         </div>
+         <div class="text-right"><span class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-medium rounded-full">Semester III</span>
+         </div>
+        </div>
+        <div class="space-y-4 mb-5 py-4 border-y border-slate-100">
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+           </svg><span>Units</span>
+          </div><span class="font-semibold text-slate-800">4</span>
+         </div>
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+           </svg><span>MCQs</span>
+          </div><span class="font-semibold text-slate-800">75/100</span>
+         </div>
+        </div>
+        <div class="mb-6">
+         <div class="flex items-center justify-between mb-3"><span class="text-sm font-medium text-slate-700">Overall Progress</span> <span class="text-sm font-bold text-slate-800">72%</span>
+         </div>
+         <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+          <div class="progress-bar h-full bg-amber-500 rounded-full" style="width: 72%"></div>
+         </div>
+        </div>
+        <div class="mb-5 flex items-center gap-2 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+         <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+         </svg><span class="text-xs text-emerald-700"><strong>75%</strong> MCQ completion</span>
+        </div><button id="view-button" class="w-full px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors"> View Units </button>
+       </div>
+      </div><!-- Subject Card 5 -->
+      <div class="subject-card bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg">
+       <div class="p-6">
+        <div class="flex items-start justify-between mb-4">
+         <div>
+          <h3 class="heading-font text-lg font-bold text-slate-800 mb-1">Software Engineering</h3>
+          <p class="text-sm text-slate-500">MCA305 • 3 Credits</p>
+         </div>
+         <div class="text-right"><span class="inline-block px-3 py-1 bg-rose-50 text-rose-700 text-xs font-medium rounded-full">Semester III</span>
+         </div>
+        </div>
+        <div class="space-y-4 mb-5 py-4 border-y border-slate-100">
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+           </svg><span>Units</span>
+          </div><span class="font-semibold text-slate-800">3</span>
+         </div>
+         <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center gap-2 text-slate-600">
+           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+           </svg><span>MCQs</span>
+          </div><span class="font-semibold text-slate-800">62/100</span>
+         </div>
+        </div>
+        <div class="mb-6">
+         <div class="flex items-center justify-between mb-3"><span class="text-sm font-medium text-slate-700">Overall Progress</span> <span class="text-sm font-bold text-slate-800">48%</span>
+         </div>
+         <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+          <div class="progress-bar h-full bg-orange-500 rounded-full" style="width: 48%"></div>
+         </div>
+        </div>
+        <div class="mb-5 flex items-center gap-2 p-3 bg-orange-50 rounded-lg border border-orange-100">
+         <svg class="w-4 h-4 text-orange-600 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+         </svg><span class="text-xs text-orange-700"><strong>62%</strong> MCQ completion</span>
+        </div><button id="view-button" class="w-full px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors"> View Units </button>
+       </div>
+      </div>
+     </div>
+    </main>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      student_name: 'Aryan Sharma',
+      enrollment_id: 'MCA/2024/045',
+      program_name: 'Master of Computer Applications • Semester III',
+      page_title: 'Subjects',
+      view_button_text: 'View Units',
+      primary_color: '#1e293b',
+      secondary_color: '#f8fafc',
+      text_color: '#334155',
+      accent_color: '#f59e0b',
+      surface_color: '#ffffff'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      // Update student name in header
+      const studentNameEl = document.getElementById('student-name');
+      if (studentNameEl) {
+        studentNameEl.textContent = config.student_name || defaultConfig.student_name;
+      }
+      
+      // Update enrollment ID
+      const enrollmentIdEl = document.getElementById('enrollment-id');
+      if (enrollmentIdEl) {
+        enrollmentIdEl.textContent = config.enrollment_id || defaultConfig.enrollment_id;
+      }
+      
+      // Update page title
+      const pageTitleEl = document.getElementById('page-title');
+      if (pageTitleEl) {
+        pageTitleEl.textContent = config.page_title || defaultConfig.page_title;
+      }
+      
+      // Update all view buttons
+      const viewButtons = document.querySelectorAll('#view-button');
+      viewButtons.forEach(btn => {
+        btn.textContent = config.view_button_text || defaultConfig.view_button_text;
+      });
+      
+      // Update colors
+      const header = document.getElementById('main-header');
+      if (header) {
+        header.style.backgroundColor = config.primary_color || defaultConfig.primary_color;
+      }
+      
+      document.body.style.backgroundColor = config.secondary_color || defaultConfig.secondary_color;
+      document.body.style.color = config.text_color || defaultConfig.text_color;
+    }
+    
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              cfg.primary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              cfg.secondary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              cfg.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['student_name', cfg.student_name || defaultConfig.student_name],
+        ['enrollment_id', cfg.enrollment_id || defaultConfig.enrollment_id],
+        ['program_name', cfg.program_name || defaultConfig.program_name],
+        ['page_title', cfg.page_title || defaultConfig.page_title],
+        ['view_button_text', cfg.view_button_text || defaultConfig.view_button_text]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c6a52acb6404907',t:'MTc2OTg3NDE5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
